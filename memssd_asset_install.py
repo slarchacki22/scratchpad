@@ -7,24 +7,6 @@ import subprocess
 import tarfile
 import gzip
 
-# Base dirs for non-drm(mlbam) vods.
-base_nvod_dir = '/opt/portal/vendors/mlbam/vchunks/vod'
-base_alt_nvod_dir = '/mnt/media_a/mlbam_vchunks/vod'
-
-# base directories for HLS non-DRM VODs
-base_hvod_dir = '/opt/portal/media/hls/vod/assets'
-base_alt_hvod_dir = '/mnt/media_a/hls_vod'
-
-# base directores for Widevine DRM VODs
-base_wvod_dir = '/opt/portal/vendors/widevine/assets'
-base_alt_wvod_dir = '/mnt/media_a/wv_vod/assets'
-
-# ereader paths
-ereader_package_dir = '/mnt/media_a/ereader'
-ereader_meta_dir = '/opt/portal'
-ereader_vendor_path = '/opt/portal/vendors/ereader'
-ebook_meta_path = '/opt/portal/ebook_meta'
-
 def is_memssd_mounted():
     memssd_mnt = '/mnt/memssd_media'
 
@@ -81,7 +63,7 @@ def check_memssd_md5_signature(tar_file, md5_sig):
     copy_memssd_content(tar_file)
 
 def copy_memssd_content(tar_file):
-    install_dir = '/opt/maint/releases'
+    install_dir = [insert_install_directory]
     print('copy content')
     shutil.copy(tar_file, install_dir)
 
